@@ -3,7 +3,8 @@
 
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from os import curdir, sep
+from cgi import parse_header, parse_multipart
+from urllib.parse import parse_qs
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -23,7 +24,7 @@ class Handler(BaseHTTPRequestHandler):
             #We only ever want to serve these pages, so close ourselves from
             #attacks to view other files by explicit enumeration, and ignoring
             #every other path
-            if self.path == "index.html" or self.path == "/":
+            if ".html" in self.path or self.path == "/":
                 print(self.path)
                 #Make headers
                 self.send_response(200)
@@ -31,7 +32,7 @@ class Handler(BaseHTTPRequestHandler):
                 #Read content to serve
                 with open("./index.html","r") as indexFile:
                     content = indexFile.read()
-            elif self.path == "styles.css":
+            elif ".css" in self.path:
                 #Make headers
                 self.send_response(200)
                 self.send_header("Content-type", "text/css")
@@ -48,11 +49,39 @@ class Handler(BaseHTTPRequestHandler):
         except IOError:
             self.send_error(404,"File Not Found: {}".format(self.path))
 
-    #def do_POST(self):
-        #content_length = int(self.headers["Content-Length"]) # <--- Gets the size of data
-        #post_data = self.rfile.read(content_length) # <--- Gets the data itself
-        #self._setHtmlResponse()
-        #self.wfile.write("POST request for {}".format(self.path).encode("utf-8"))
+
+
+
+    def parse_POST(self):
+        ctype, pdict = parse_header(self.headers['content-type'])
+        if ctype == 'multipart/form-data':
+            postvars = parse_multipart(self.rfile, pdict)
+        elif ctype == 'application/x-www-form-urlencoded':
+            length = int(self.headers['content-length'])
+            postvars = parse_qs(
+                    self.rfile.read(length),
+                    keep_blank_values=1)
+        else:
+            postvars = {}
+        return postvars
+
+
+    def do_POST(self):
+        postVars = self.parse_POST()
+
+        if b"InChiCode" in postVars:
+            self.send_response(200)
+            self.send_header("Content-type", "text/html")
+            self.end_headers()
+            self.wfile.write("Data: {}".format(postVars[b"InChiCode"]).encode("utf-8"))
+        else:
+            self.send_response(200)
+            self.send_header("Content-type", "text/html")
+            self.end_headers()
+            self.wfile.write("Invalid fields in POST request: {}".format(postVars).encode("utf-8"))
+
+
+
 
 
 

@@ -200,7 +200,13 @@ pre {
     padding-right: 1em;
 }
 
+#submissionForm {
+    text-align: center;
+}
 
+#submissionInput {
+    width: 80%;
+}
 
 
 

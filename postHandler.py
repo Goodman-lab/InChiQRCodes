@@ -6,6 +6,9 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from cgi import parse_header, parse_multipart
 from urllib.parse import parse_qs
 
+from io import BytesIO
+import qrcode
+
 
 class Handler(BaseHTTPRequestHandler):
     def __init__(self, request, client_address, server):
@@ -13,10 +16,6 @@ class Handler(BaseHTTPRequestHandler):
         self.request_id = ""
 
 
-    def _setPngResponse(self):
-        self.send_response(200)
-        self.send_header("Content-type", "image/png")
-        self.end_headers()
 
     def do_GET(self):
 
@@ -53,6 +52,7 @@ class Handler(BaseHTTPRequestHandler):
 
 
     def parse_POST(self):
+        #Parse the post headers
         ctype, pdict = parse_header(self.headers['content-type'])
         if ctype == 'multipart/form-data':
             postvars = parse_multipart(self.rfile, pdict)
@@ -70,15 +70,23 @@ class Handler(BaseHTTPRequestHandler):
         postVars = self.parse_POST()
 
         if b"InChiCode" in postVars:
+            #If the valid field is given, make a qr code
+            InChiString = postVars[b"InChiCode"][0].decode("ascii")
+            img = qrcode.make(InChiString)
+
+            #Write the code to a format that can be sent over http
+            buf = BytesIO()
+            img.save(buf, "PNG")
+            contents = buf.getvalue()
+
+            #Serve the qr code data
             self.send_response(200)
-            self.send_header("Content-type", "text/html")
+            self.send_header("Content-type", "image/png")
             self.end_headers()
-            self.wfile.write("Data: {}".format(postVars[b"InChiCode"]).encode("utf-8"))
+            self.wfile.write(contents)
         else:
-            self.send_response(200)
-            self.send_header("Content-type", "text/html")
-            self.end_headers()
-            self.wfile.write("Invalid fields in POST request: {}".format(postVars).encode("utf-8"))
+            #If no valid field is given, return an error page
+            self.send_error(404,"Invalid fields in POST request: {}".format(postVars))
 
 
 

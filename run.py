@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-
-
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from cgi import parse_header, parse_multipart
 from urllib.parse import parse_qs
@@ -15,10 +13,7 @@ class Handler(BaseHTTPRequestHandler):
         BaseHTTPRequestHandler.__init__(self, request, client_address, server)
         self.request_id = ""
 
-
-
     def do_GET(self):
-
         try:
             #We only ever want to serve these pages, so close ourselves from
             #attacks to view other files by explicit enumeration, and ignoring
@@ -87,8 +82,6 @@ class Handler(BaseHTTPRequestHandler):
         else:
             #If no valid field is given, return an error page
             self.send_error(404,"Invalid fields in POST request: {}".format(postVars))
-
-
 
 
 

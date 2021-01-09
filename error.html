@@ -4,19 +4,27 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
         <link rel="stylesheet" href="styles.css">
-        <title>InChi QR code generator</title>
+        <title>InChI QR code generator</title>
     </head>
     <body>
 
 
         <section class="navbar">
             <h1 class="title hidden">Navigation bar</h1>
-            <a href="./index.html" class="active">Home</a>
+            <a href="./index.html" class="active">QRInChI</a>
             <div class="dropdown">
-                <button class="dropdownButton">Dropdown &#9660;</button>
+                <button class="dropdownButton">InChI Resources &#9660;</button>
                 <div class="dropdownContent">
-                    <a href="#id1">Dropdown 1</a>
-                    <a href="#id2">Dropdown 2</a>
+                    <a href="https://www.inchi-trust.org">InChI Trust</a>
+                    <a href="https://iupac.org/who-we-are/committees/committee-details/?body_code=802">IUPAC InChI subcommittee</a>
+                    <a href="https://doi.org/10.1186/s13321-018-0277-8">RInChI: the reaction InChI</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropdownButton">About this program &#9660;</button>
+                <div class="dropdownContent">
+                    <a href="http://orcid.org/0000-0002-8693-9136">J. M. Goodman</a>
+                    <a href="http://orcid.org/0000-0002-2824-1805">E. D. J. Goodman</a>
                 </div>
             </div>
         </section>
@@ -27,9 +35,9 @@
                 Error!
             </h1>
 
-            <h2 class="heading dropcap">
-                The InChi code you entered could not be converted into a QR code,
-                try checking that it is of the correct schema.
+            <h2 class="heading">
+                The InChIKey could not be converted into a QR code.
+                Are you sure it is correct?
             </h2>
 
         </section>

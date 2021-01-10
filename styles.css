@@ -204,30 +204,6 @@ pre {
 
 
 
-.submissionForm {
-    text-align: center;
-}
-
-.submissionForm input {
-    font-size:25px;
-}
-
-.submissionForm input[type=text] {
-    width: 80%;
-    border-radius: 2px;
-    border-style: solid;
-    border-color: #333;
-    background-color: #ffffe6;
-}
-
-.submissionForm input[type=submit], .submissionForm input[type=reset] {
-    margin: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
 
 /* Make a navbar, which changes colour when links are hovered over, and
 allows drop-down menus */

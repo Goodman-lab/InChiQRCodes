@@ -44,11 +44,12 @@
 
 
             <h2 id="id1" class="heading">Request a QR code by entering an InChIKey:</h2>
-            <form class="submissionForm" action="./qri.php" method="get">
+            <!-- Using inline stylings to support safari rendering -->
+            <form action="./qri.php" method="get" style="text-align:center;">
                 <label for="InChIKey"></label>
-                <input type="text" id="InChIKey" name="InChIKey"><br>
-                <input type="reset" value="Reset">
-                <input type="submit" value="Generate QR Code">
+                <input type="text" id="InChIKey" name="InChIKey" style="font-size:25px; width:80%; border-radius:2px; border-style:solid; border-color:#333; background-color:#ffffe6;"><br>
+                <input type="reset" value="Reset" style="font-size:25px; margin:10px; padding-top:5px; padding-bottom:5px; padding-left:10px; padding-right:10px;">
+                <input type="submit" value="Generate QR Code" style="font-size:25px; margin:10px; padding-top:5px; padding-bottom:5px; padding-left:10px; padding-right:10px;">
            </form>
 
             <br>

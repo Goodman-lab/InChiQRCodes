@@ -188,7 +188,7 @@ pre {
     word-wrap: break-word;
 }
 
-#shell {
+.shell {
     /* Emulate the dollar showing a shell command, but make it unselectable
     in order to make copying code easier */
     -webkit-touch-callout: none;
@@ -200,14 +200,33 @@ pre {
     padding-right: 1em;
 }
 
-#submissionForm {
+
+
+
+
+.submissionForm {
     text-align: center;
 }
 
-#submissionInput {
-    width: 80%;
+.submissionForm input {
+    font-size:25px;
 }
 
+.submissionForm input[type=text] {
+    width: 80%;
+    border-radius: 2px;
+    border-style: solid;
+    border-color: #333;
+    background-color: #ffffe6;
+}
+
+.submissionForm input[type=submit], .submissionForm input[type=reset] {
+    margin: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
 
 /* Make a navbar, which changes colour when links are hovered over, and
@@ -273,11 +292,4 @@ allows drop-down menus */
 
 .dropdown:hover .dropdownContent {
     display: block;
-}
-
-#navbarIcon {
-    padding: 0.5em 0.5em 0.5em 0.5em;
-    width: 2em;
-    height: 2em;
-    float: right;
 }

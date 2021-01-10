@@ -1,0 +1,2 @@
+#Don't store any generated QR codes in the git repository
+qr/*.png

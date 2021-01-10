@@ -25,6 +25,7 @@
                 <div class="dropdownContent">
                     <a href="http://orcid.org/0000-0002-8693-9136">J. M. Goodman</a>
                     <a href="http://orcid.org/0000-0002-2824-1805">E. D. J. Goodman</a>
+                    <a href="https://github.com/EdmundGoodman/InChiQRCodes">GitHub Source Code</a>
                 </div>
             </div>
         </section>
@@ -36,35 +37,35 @@
             </h1>
 
             <h2 class="heading dropcap">
-                Generate a QR code from an InChIKey. 
+                Generate a QR code from an InChIKey.
                 The QRInChI is an image in the .png format and may be downloaded, saved and printed.
                 <a href="https://pubchem.ncbi.nlm.nih.gov">PubChem</a> may be able to find the molecule it represents.
             </h2><div class="underbar"></div>
 
 
             <h2 id="id1" class="heading">Request a QR code by entering an InChIKey:</h2>
-            <form id="submissionForm" action="./qri.php" method="get">
+            <form class="submissionForm" action="./qri.php" method="get">
                 <label for="InChIKey"></label>
-                <input id="submissionInput" type="text" id="InChIKey" name="InChIKey">
+                <input type="text" id="InChIKey" name="InChIKey"><br>
+                <input type="reset" value="Reset">
                 <input type="submit" value="Generate QR Code">
            </form>
 
-            <p />
+            <br>
             This is an experimental, proof-of-concept, QRInChI generator.
             IUPAC is discussing a standard for InChI QR Codes, but a recommendation has yet to be agreed.
             These QRInChI are generated without any guarantee for any application whatsoever.
 
-            <div class="underbar"></div>
-            <p />
-            <i>Alternative interface:</i><br />
-            A QR code can also be generated directly from a URL.<br />
-            For example:<br />
+            <div class="underbar"></div><br>
+            <i>Alternative interface:</i><br>
+            A QR code can also be generated directly from a URL, for example:<br><br>
             <a href="http://www-rinchi.ch.cam.ac.uk/qrinchi/qri.php?InChIKey=XMWRBQBLMFGWIX-UHFFFAOYSA-N">
-            http://www-rinchi.ch.cam.ac.uk/qrinchi/qri.php?InChIKey=XMWRBQBLMFGWIX-UHFFFAOYSA-N</a><br />
-            will generate a QRInChI for the molecule with InChIKey XMWRBQBLMFGWIX-UHFFFAOYSA-N<br />
-            on <a href="http://www-rinchi.ch.cam.ac.uk/qrinchi/qr/XMWRBQBLMFGWIX-UHFFFAOYSA-N.png">http://www-rinchi.ch.cam.ac.uk/qrinchi/qr/XMWRBQBLMFGWIX-UHFFFAOYSA-N.png</a><br />
+            http://www-rinchi.ch.cam.ac.uk/qrinchi/qri.php?InChIKey=XMWRBQBLMFGWIX-UHFFFAOYSA-N</a><br>
+            will generate a QRInChI for the molecule with InChIKey XMWRBQBLMFGWIX-UHFFFAOYSA-N<br>
+            on <a href="http://www-rinchi.ch.cam.ac.uk/qrinchi/qr/XMWRBQBLMFGWIX-UHFFFAOYSA-N.png">
+            http://www-rinchi.ch.cam.ac.uk/qrinchi/qr/XMWRBQBLMFGWIX-UHFFFAOYSA-N.png</a><br><br>
             This image file will remain available for a while.
-            
+
             <div class="underbar"></div>
 
         </section>

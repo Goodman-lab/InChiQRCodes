@@ -20,6 +20,14 @@
                     <a href="https://doi.org/10.1186/s13321-018-0277-8">RInChI: the reaction InChI</a>
                 </div>
             </div>
+            <div class="dropdown">
+                <button class="dropdownButton">About this program &#9660;</button>
+                <div class="dropdownContent">
+                    <a href="http://orcid.org/0000-0002-8693-9136">J. M. Goodman</a>
+                    <a href="http://orcid.org/0000-0002-2824-1805">E. D. J. Goodman</a>
+                    <a href="https://github.com/EdmundGoodman/InChiQRCodes">GitHub Source Code</a>
+                </div>
+            </div>
         </section>
 
 

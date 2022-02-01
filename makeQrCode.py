@@ -18,7 +18,7 @@ def makeQrCode(InChiCode):
         os.remove(txtPath)
     else:
         #If it doesn't exist, generate and save it
-        img = qrcode.make("https://pubchem.ncbi.nlm.nih.gov/#query="+InChiCode)
+        img = qrcode.make("https://pubchem.ncbi.nlm.nih.gov/#query=inchikey="+InChiCode)
         img.save(qrPath, "PNG")
         os.remove(txtPath)
 
